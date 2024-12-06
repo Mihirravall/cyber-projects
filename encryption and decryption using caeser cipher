@@ -1,0 +1,24 @@
+# Caesar Cipher Encryption
+def caesar_encrypt(text, key):
+    encrypted_text = ""
+    for char in text:
+        if char.isalpha():
+            shift = 65 if char.isupper() else 97
+            encrypted_text += chr((ord(char) - shift + key) % 26 + shift)
+        else:
+            encrypted_text += char
+    return encrypted_text
+
+# Caesar Cipher Decryption
+def caesar_decrypt(text, key):
+    return caesar_encrypt(text, -key)
+
+# Example Usage
+plaintext = input("Enter text to encrypt: ")
+key = int(input("Enter the encryption key: "))
+
+encrypted = caesar_encrypt(plaintext, key)
+print(f"Encrypted Text: {encrypted}")
+
+decrypted = caesar_decrypt(encrypted, key)
+print(f"Decrypted Text: {decrypted}")
